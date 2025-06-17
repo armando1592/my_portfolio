@@ -1,0 +1,128 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #ff007f;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .hire-btn {
+      background: #ff007f;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .hire-btn:hover {
+      background: #e60073;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 10%;
+      background: white;
+    }
+
+    .hero .content {
+      max-width: 50%;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin: 20px 0;
+    }
+
+    .hero h1 span {
+      color: #ff007f;
+    }
+
+    .hero .description {
+      margin: 20px 0;
+      line-height: 1.6;
+    }
+
+    .hero .socials a img {
+      width: 24px;
+      margin-right: 10px;
+    }
+
+    .hero .image img {
+      width: 300px;
+      border-radius: 16px;
+    }
+
+    .about {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 10%;
+    }
+
+    .about-image img {
+      width: 300px;
+      border-radius: 16px;
+    }
+
+    .about-text {
+      max-width: 50%;
+    }
+
+    .about-text h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .download-btn {
+      background: #ff007f;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .download-btn:hover {
+      background: #e60073;
+    }
