@@ -1,96 +1,96 @@
-// Carousel functionality
-        let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.dot');
-        const totalSlides = slides.length;
+let slideIndex = 1; // Índice de la diapositiva actual
+let autoSlideInterval; // Variable para almacenar el ID del intervalo de auto-slide
 
-        function showSlide(index) {
-            const slidesContainer = document.querySelector('.carousel-slides');
-            const slideWidth = slides[0].offsetWidth;
-            
-            // Ensure index is within bounds
-            if (index >= totalSlides) {
-                currentSlideIndex = 0;
-            } else if (index < 0) {
-                currentSlideIndex = totalSlides - 1;
-            } else {
-                currentSlideIndex = index;
-            }
-            
-            // Move to the correct slide
-            slidesContainer.style.transform = `translateX(-${currentSlideIndex * slideWidth}px)`;
-            
-            // Update dots
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentSlideIndex);
-            });
-        }
+// --- Funcionalidad del Carrusel ---
 
-        function nextSlide() {
-            showSlide(currentSlideIndex + 1);
-        }
+// Función para mostrar las diapositivas
+function showSlides(n) {
+    let i;
+    const slides = document.getElementsByClassName("carousel-slide");
+    const dots = document.getElementsByClassName("dot");
 
-        function prevSlide() {
-            showSlide(currentSlideIndex - 1);
-        }
+    // Reinicia el índice si se va más allá de la última o primera diapositiva
+    if (n > slides.length) { slideIndex = 1; }
+    if (n < 1) { slideIndex = slides.length; }
 
-        function currentSlide(index) {
-            showSlide(index - 1);
-        }
+    // Oculta todas las diapositivas (moverlas fuera de la vista)
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.transform = `translateX(-${(slideIndex - 1) * 100}%)`;
+    }
 
-        // Auto-advance carousel
-        setInterval(nextSlide, 5000);
+    // Remueve la clase 'active' de todos los puntos
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
 
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            showSlide(currentSlideIndex);
+    // Si hay puntos, activa el punto de la diapositiva actual
+    if (dots.length > 0) {
+        dots[slideIndex - 1].className += " active";
+    }
+}
+
+// Función para avanzar o retroceder diapositivas
+function plusSlides(n) {
+    // Detiene el auto-slide al interactuar manualmente
+    clearInterval(autoSlideInterval);
+    showSlides(slideIndex += n);
+    // Reinicia el auto-slide después de un breve retraso
+    startAutoSlide();
+}
+
+// Función para ir a una diapositiva específica al hacer clic en un punto
+function currentSlide(n) {
+    // Detiene el auto-slide al interactuar manualmente
+    clearInterval(autoSlideInterval);
+    showSlides(slideIndex = n);
+    // Reinicia el auto-slide después de un breve retraso
+    startAutoSlide();
+}
+
+// Función para iniciar el movimiento automático del carrusel
+function startAutoSlide() {
+    // Limpia cualquier intervalo existente antes de iniciar uno nuevo
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(() => {
+        plusSlides(1); // Avanza una diapositiva
+    }, 1000); // Cambia cada 1 segundo (1000 milisegundos)
+}
+
+// --- Funcionalidad del Menú de Navegación Responsive ---
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Inicializar carrusel
+    showSlides(slideIndex);
+    startAutoSlide();
+
+    // Funcionalidad del menú de hamburguesa
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMainWrapper = document.querySelector('.nav-main-wrapper'); // Contenedor del menú y botones
+
+    if (menuToggle && navMainWrapper) {
+        menuToggle.addEventListener('click', () => {
+            navMainWrapper.classList.toggle('is-open'); // Clase para mostrar/ocultar
+            menuToggle.classList.toggle('is-active'); // Clase para animar el icono
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // Opcional: Cerrar el menú si se hace clic fuera de él
+        document.addEventListener('click', (event) => {
+            const isClickInsideNav = navMainWrapper.contains(event.target) || menuToggle.contains(event.target);
+            if (!isClickInsideNav && navMainWrapper.classList.contains('is-open')) {
+                navMainWrapper.classList.remove('is-open');
+                menuToggle.classList.remove('is-active');
+            }
+        });
+
+        // Opcional: Cerrar el menú si se hace clic en un enlace de navegación
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMainWrapper.classList.contains('is-open')) {
+                    navMainWrapper.classList.remove('is-open');
+                    menuToggle.classList.remove('is-active');
                 }
             });
         });
-
-        // Add scroll effect to header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'linear-gradient(135deg, rgba(255, 107, 157, 0.95), rgba(196, 69, 105, 0.95))';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'linear-gradient(135deg, #ff6b9d, #c44569)';
-                header.style.backdropFilter = 'none';
-            }
-        });
-
-        // Animate blog cards on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe blog cards
-        document.querySelectorAll('.blog-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
+    }
+});
