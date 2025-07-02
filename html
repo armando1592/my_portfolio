@@ -1,48 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lunatic</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="script.js">
-
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <!-- Header -->
     <header>
         <nav>
             <a href="#" class="logo">EventsLunatic</a>
-            <ul class="nav-links">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#blog">Eventos</a></li>
-                <li><a href="#readevents">Crear Evento</a></li>
-                <li><a href="#local">Locales</a></li>
-                <li><a href="#entrada">Encontrar mis entradas</a></li>
-            </ul>
-            <a href="#" class="login-btn">Iniciar sesion</a>
-            <a href="#" class="login-btn">Registrarse</a>
+            
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+            </button>
+
+            <div class="nav-main-wrapper">
+                <ul class="nav-links">
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#evento">Próximos Eventos</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#local">Locales</a></li>
+                    <li><a href="#experiencia">Experiencias</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="#" class="login-btn">Iniciar sesión</a>
+                    <a href="#" class="login-btn">Registrarse</a>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Hero Section with Carousel -->
         <section class="hero-section" id="home">
             <div class="hero-container">
                 <div class="hero-content">
                     <h1>Haz lo que te apasiona</h1>
-                    <p>porque aqui es donde tu esfuerzo se convierte en alegría y el tiempo deja de pesar.</p>
-                    <a href="#" class="cta-button">Mas información → </a>
+                    <p>porque aquí es donde tu esfuerzo se convierte en alegría y el tiempo deja de pesar.</p>
+                    <a href="#" class="cta-button">Más información → </a>
                 </div>
                 <div class="carousel-container">
                     <div class="carousel">
-                        <div class="carousel-slides">
+                        <div class="carousel-slides" id="carousel-slides">
                             <div class="carousel-slide">
                                 <img src="https://grandluxormice.com/es/wp-content/uploads/sites/3/2022/07/Evento-corporativo-e1661944165280-1900x1069.jpg"
-                                    alt="Laravel Development">
+                                    alt="Desarrollo Laravel">
                                 <div class="slide-content">
                                     <h3>Tributo Oficial a The Cure en Miraflores Jazz Zone</h3>
                                     <p>Av. La Paz 656 - MIRAFLORES - LIMA viernes 04 jul. - 10:30pm</p>
@@ -58,17 +65,17 @@
                             </div>
                             <div class="carousel-slide">
                                 <img src="https://grandluxormice.com/es/wp-content/uploads/sites/3/2022/07/Evento-corporativo-e1661944165280-1900x1069.jpg"
-                                    alt="Web Development">
+                                    alt="Desarrollo Web">
                                 <div class="slide-content">
                                     <h3>Tributo Oficial a The Cure en Miraflores Jazz Zone</h3>
                                     <p>Av. La Paz 656 - MIRAFLORES - LIMA viernes 04 jul. - 10:30pm</p>
                                 </div>
                             </div>
                         </div>
-                        <button class="carousel-nav carousel-prev" onclick="prevSlide()">❮</button>
-                        <button class="carousel-nav carousel-next" onclick="nextSlide()">❯</button>
+                        <button class="carousel-nav carousel-prev" onclick="plusSlides(-1)">❮</button>
+                        <button class="carousel-nav carousel-next" onclick="plusSlides(1)">❯</button>
                     </div>
-                    <div class="carousel-dots">
+                    <div class="carousel-dots" id="carousel-dots-container">
                         <span class="dot active" onclick="currentSlide(1)"></span>
                         <span class="dot" onclick="currentSlide(2)"></span>
                         <span class="dot" onclick="currentSlide(3)"></span>
@@ -77,15 +84,14 @@
             </div>
         </section>
 
-        <!-- Blog Section -->
-        <section class="blog-section" id="blog">
+        <section class="blog-section" id="evento">
             <div class="blog-container">
-                <h2 class="section-title">Proximos Eventos</h2>
+                <h2 class="section-title">Próximos Eventos</h2>
                 <p style="text-align: center; margin-bottom: 3rem; color: #666;">Te recomendamos estos eventos</p>
                 <div class="blog-grid">
                     <article class="blog-card">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOc_a11spDXJVaKzdVGAb-M1kCBy1be64NdQ&s"
-                            alt="Laravel Application">
+                            alt="Aplicación Laravel">
                         <div class="blog-card-content">
                             <h3>Kjarkas y Antología en Feria San Pedrito 2025</h3>
                             <h4>Jueves 03 julio de 2025 - 01:00pm - Explanada Vivero Forestal, CHIMBOTE - ÁNCASH</h4>
@@ -93,12 +99,12 @@
                                 Los Kjarkas son un emblemático grupo musical de Bolivia, reconocido internacionalmente
                                 por ser uno de los máximos exponentes de la música andina.
                             </p>
-                            <a href="#" class="read-more">Mas información →</a>
+                            <a href="#" class="read-more">Más información →</a>
                         </div>
                     </article>
                     <article class="blog-card">
                         <img src="https://www.rockandpop.cl/wp-content/uploads/2025/01/Copia-de-Copia-de-Foto-web-copia-16-2-768x432.webp"
-                            alt="Docker Setup">
+                            alt="Configuración Docker">
                         <div class="blog-card-content">
                             <h3>Tributo a Twenty One Pilots en Lince</h3>
                             <h4>Sábado 05 julio de 2025 - 09:00pm - Iwanna Rock, Jr. Mariscal Las Heras 219 - LINCE -
@@ -108,12 +114,12 @@
                                 Pilots, con la participación de las bandas tributos invitadas, Coldplay, Arctic Monkeys
                                 y Keane.
                             </p>
-                            <a href="#" class="read-more">Mas información →</a>
+                            <a href="#" class="read-more">Más información →</a>
                         </div>
                     </article>
                     <article class="blog-card">
                         <img src="https://f.rpp-noticias.io/2025/05/01/400640_1738207.jpg?imgdimension=look"
-                            alt="Dynamic Twitter Content">
+                            alt="Contenido Dinámico de Twitter">
                         <div class="blog-card-content">
                             <h3>Los Mirlos en Cusco</h3>
                             <h4>Domingo 06 julio de 2025 - 07:00pm - Teatro Municipal, Av. Meson De La Estrella 149 -
@@ -125,12 +131,12 @@
                                 selvático y tradición musical.
 
                             </p>
-                            <a href="#" class="read-more">Mas información →</a>
+                            <a href="#" class="read-more">Más información →</a>
                         </div>
                     </article>
                     <article class="blog-card">
                         <img src="https://resizer.glanacion.com/resizer/v2/guido-pato-y-gaston-sardelli-en-el-show-que-XBH5VQOI2BDSLJLWGTTLFJDNAU.jpg?auth=19977ce6fc916f7e32729b08e820405386cb74406477773ce6612028e0a85374&width=1200&quality=70&smart=false&height=800"
-                            alt="GitHub Actions">
+                            alt="Acciones de GitHub">
                         <div class="blog-card-content">
                             <h3>Tributo Oficial a Airbag en Puno</h3>
                             <h4>Sábado 12 julio de 2025 - 08:00pm - ECCOS RESTOBAR, Jr. Grau 137 Cercado - PUNO</h4>
@@ -139,7 +145,213 @@
                                 en vivo los grandes éxitos de esta icónica banda argentina interpretados con toda la
                                 energía que merecen.
                             </p>
-                            <a href="#" class="read-more">Mas información →</a>
+                            <a href="#" class="read-more">Más información →</a>
+                        </div>
+                    </article>
+                     <article class="blog-card">
+                        <img src="https://static.vaope.com/public/products/2679/682-GRILLA-SALIM-SHULLKAS-HUANCAYO.jpg"
+                            alt="Acciones de GitHub">
+                        <div class="blog-card-content">
+                            <h3>Salim & Manolo y Daniel F en Huancayo</h3>
+                            <h4>Viernes 04 julio de 2025  - 08:00pm - Centro de Convenciones Shullkas, Av. Real N° 1894 - CHILCA - JUNÍN</h4>
+                            <p>
+                               ¡La fiesta está asegurada en Huancayo! Prepárate para una noche inolvidable con la energía explosiva de Salim & Manolo y todo el romanticismo de Daniel F, en un concierto que une ritmo, sentimiento y pura pasión por la música nacional.
+                            </p>
+                            <a href="#" class="read-more">Más información →</a>
+                        </div>
+                    </article>
+                     <article class="blog-card">
+                        <img src="https://static.vaope.com/public/products/2627/1294-WEB-CCAMPO-FERIAL.jpg?w=800"
+                            alt="Acciones de GitHub">
+                        <div class="blog-card-content">
+                            <h3>Corazón Serrano en Juliaca</h3>
+                            <h4>Viernes 04 julio de 2025 - 08:00pm - Campo Ferial, JULIACA - PUNO</h4>
+                            <p>
+                                Prepárate para una noche inolvidable llena de música, alegría y sentimiento. La agrupación más querida del Perú, Corazón Serrano, se presentará en Juliaca,
+                                con todos sus grandes éxitos que han hecho cantar y bailar a millones.
+                            </p>
+                            <a href="#" class="read-more">Más información →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="blog-section" id="blog">
+            <div class="blog-container">
+                <h2 class="section-title">Blog de Eventos</h2>
+                <p style="text-align: center; margin-bottom: 3rem; color: #666;">Descubre lo último y más interesante</p>
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOc_a11spDXJVaKzdVGAb-M1kCBy1be64NdQ&s"
+                            alt="Aplicación Laravel">
+                        <div class="blog-card-content">
+                            <h3>Kjarkas y Antología en Feria San Pedrito 2025</h3>
+                            <h4>Jueves 03 julio de 2025 - 01:00pm - Explanada Vivero Forestal, CHIMBOTE - ÁNCASH</h4>
+                            <p>
+                                Los Kjarkas son un emblemático grupo musical de Bolivia, reconocido internacionalmente
+                                por ser uno de los máximos exponentes de la música andina.
+                            </p>
+                            <a href="#" class="read-more">Más información →</a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <img src="https://www.rockandpop.cl/wp-content/uploads/2025/01/Copia-de-Copia-de-Foto-web-copia-16-2-768x432.webp"
+                            alt="Configuración Docker">
+                        <div class="blog-card-content">
+                            <h3>Tributo a Twenty One Pilots en Lince</h3>
+                            <h4>Sábado 05 julio de 2025 - 09:00pm - Iwanna Rock, Jr. Mariscal Las Heras 219 - LINCE -
+                                LIMA</h4>
+                            <p>
+                                Prepárate para una noche llena de rock y energía con Clancy, el tributo a Twenty One
+                                Pilots, con la participación de las bandas tributos invitadas, Coldplay, Arctic Monkeys
+                                y Keane.
+                            </p>
+                            <a href="#" class="read-more">Más información →</a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <img src="https://f.rpp-noticias.io/2025/05/01/400640_1738207.jpg?imgdimension=look"
+                            alt="Contenido Dinámico de Twitter">
+                        <div class="blog-card-content">
+                            <h3>Los Mirlos en Cusco</h3>
+                            <h4>Domingo 06 julio de 2025 - 07:00pm - Teatro Municipal, Av. Meson De La Estrella 149 -
+                                CUSCO</h4>
+                            <p>
+                                Disfruta de una noche inolvidable con Los Mirlos, íconos de la cumbia amazónica, en el
+                                majestuoso Teatro Municipal del Cusco.
+                                Prepárate para bailar al ritmo de sus grandes éxitos en un concierto lleno de sabor
+                                selvático y tradición musical.
+
+                            </p>
+                            <a href="#" class="read-more">Más información →</a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <img src="https://resizer.glanacion.com/resizer/v2/guido-pato-y-gaston-sardelli-en-el-show-que-XBH5VQOI2BDSLJLWGTTLFJDNAU.jpg?auth=19977ce6fc916f7e32729b08e820405386cb74406477773ce6612028e0a85374&width=1200&quality=70&smart=false&height=800"
+                            alt="Acciones de GitHub">
+                        <div class="blog-card-content">
+                            <h3>Tributo Oficial a Airbag en Puno</h3>
+                            <h4>Sábado 12 julio de 2025 - 08:00pm - ECCOS RESTOBAR, Jr. Grau 137 Cercado - PUNO</h4>
+                            <p>
+                                Prepárate para una noche cargada de rock y emoción con el Tributo Oficial a Airbag. Vive
+                                en vivo los grandes éxitos de esta icónica banda argentina interpretados con toda la
+                                energía que merecen.
+                            </p>
+                            <a href="#" class="read-more">Más información →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+ <section class="blog-section" id="local">
+            <div class="blog-container">
+                <h2 class="section-title">Nuestros Locales Afiliados</h2>
+                <p style="text-align: center; margin-bottom: 3rem; color: #666;">Encuentra el lugar perfecto para tu evento</p>
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOc_a11spDXJVaKzdVGAb-M1kCBy1be64NdQ&s"
+                            alt="Aplicación Laravel">
+                        <div class="blog-card-content">
+                            <h3>Gran Salón "El Paraíso"</h3>
+                            <h4>Capacidad: 500 personas - Ubicación: Miraflores, Lima</h4>
+                            <p>
+                                Un espacio elegante y versátil, ideal para bodas, conferencias y grandes celebraciones.
+                            </p>
+                            <a href="#" class="read-more">Más información →</a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <img src="https://www.rockandpop.cl/wp-content/uploads/2025/01/Copia-de-Copia-de-Foto-web-copia-16-2-768x432.webp"
+                            alt="Configuración Docker">
+                        <div class="blog-card-content">
+                            <h3>Auditorio "Sonido Urbano"</h3>
+                            <h4>Capacidad: 200 personas - Ubicación: Lince, Lima</h4>
+                            <p>
+                                Perfecto para conciertos íntimos, presentaciones musicales y eventos culturales.
+                            </p>
+                            <a href="#" class="read-more">Más información →</a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <img src="https://f.rpp-noticias.io/2025/05/01/400640_1738207.jpg?imgdimension=look"
+                            alt="Contenido Dinámico de Twitter">
+                        <div class="blog-card-content">
+                            <h3>Teatro Colonial</h3>
+                            <h4>Capacidad: 300 personas - Ubicación: Cusco</h4>
+                            <p>
+                                Un teatro histórico con un encanto único, ideal para obras de teatro, festivales y proyecciones.
+
+                            </p>
+                            <a href="#" class="read-more">Más información →</a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <img src="https://resizer.glanacion.com/resizer/v2/guido-pato-y-gaston-sardelli-en-el-show-que-XBH5VQOI2BDSLJLWGTTLFJDNAU.jpg?auth=19977ce6fc916f7e32729b08e820405386cb74406477773ce6612028e0a85374&width=1200&quality=70&smart=false&height=800"
+                            alt="Acciones de GitHub">
+                        <div class="blog-card-content">
+                            <h3>Centro de Convenciones "Lago Titicaca"</h3>
+                            <h4>Capacidad: 800 personas - Ubicación: Puno</h4>
+                            <p>
+                                El lugar más grande de la región, perfecto para grandes convenciones, ferias y eventos masivos.
+                            </p>
+                            <a href="#" class="read-more">Más información →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+ <section class="blog-section" id="experiencia">
+            <div class="blog-container">
+                <h2 class="section-title">Experiencias Memorables</h2>
+                <p style="text-align: center; margin-bottom: 3rem; color: #666;">Historias de eventos que te inspirarán</p>
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOc_a11spDXJVaKzdVGAb-M1kCBy1be64NdQ&s"
+                            alt="Aplicación Laravel">
+                        <div class="blog-card-content">
+                            <h3>La Boda Soñada de Ana y Luis</h3>
+                            <h4>Una noche mágica en el Gran Salón "El Paraíso"</h4>
+                            <p>
+                                Descubre cómo transformamos un sueño en realidad, con una decoración espectacular y música en vivo que hizo bailar a todos.
+                            </p>
+                            <a href="#" class="read-more">Leer historia →</a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <img src="https://www.rockandpop.cl/wp-content/uploads/2025/01/Copia-de-Copia-de-Foto-web-copia-16-2-768x432.webp"
+                            alt="Configuración Docker">
+                        <div class="blog-card-content">
+                            <h3>Festival de Rock Independiente "La Voz de la Calle"</h3>
+                            <h4>Un estruendo de talento en el Auditorio "Sonido Urbano"</h4>
+                            <p>
+                                Revive la energía de las bandas emergentes y la pasión del público en un festival que marcó un antes y un después.
+                            </p>
+                            <a href="#" class="read-more">Leer historia →</a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <img src="https://f.rpp-noticias.io/2025/05/01/400640_1738207.jpg?imgdimension=look"
+                            alt="Contenido Dinámico de Twitter">
+                        <div class="blog-card-content">
+                            <h3>La Celebración del Inti Raymi en Cusco</h3>
+                            <h4>Una inmersión cultural en el Teatro Colonial</h4>
+                            <p>
+                                Acompañanos en este viaje a través de la tradición y la historia, donde el Cusco se vistió de fiesta para su ancestral celebración.
+
+                            </p>
+                            <a href="#" class="read-more">Leer historia →</a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <img src="https://resizer.glanacion.com/resizer/v2/guido-pato-y-gaston-sardelli-en-el-show-que-XBH5VQOI2BDSLJLWGTTLFJDNAU.jpg?auth=19977ce6fc916f7e32729b08e820405386cb74406477773ce6612028e0a85374&width=1200&quality=70&smart=false&height=800"
+                            alt="Acciones de GitHub">
+                        <div class="blog-card-content">
+                            <h3>Conferencia Internacional de Innovación Tecnológica</h3>
+                            <h4>El futuro se hizo presente en el Centro de Convenciones "Lago Titicaca"</h4>
+                            <p>
+                                Un recuento de las mentes más brillantes y las ideas más disruptivas que se reunieron para moldear el mañana.
+                            </p>
+                            <a href="#" class="read-more">Leer historia →</a>
                         </div>
                     </article>
                 </div>
@@ -147,7 +359,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-content">
@@ -162,33 +373,33 @@
                     </div>
                 </div>
                 <div class="footer-section">
-                    <h3>Categories</h3>
+                    <h3>Categorías</h3>
                     <ul>
                         <li><a href="#">Rock</a></li>
                         <li><a href="#">Teatro</a></li>
                         <li><a href="#">Cumbia</a></li>
                         <li><a href="#">Cumpleaños</a></li>
-                        <li><a href="#">Graduacion</a></li>
+                        <li><a href="#">Graduación</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Resources</h3>
+                    <h3>Recursos</h3>
                     <ul>
-                        <li><a href="#">Tutorials</a></li>
-                        <li><a href="#">Workshops</a></li>
-                        <li><a href="#">Downloads</a></li>
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Tutoriales</a></li>
+                        <li><a href="#">Talleres</a></li>
+                        <li><a href="#">Descargas</a></li>
+                        <li><a href="#">Documentación</a></li>
+                        <li><a href="#">Comunidad</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Contact</h3>
+                    <h3>Contacto</h3>
                     <ul>
                         <li><a href="#">Email</a></li>
                         <li><a href="#">Twitter</a></li>
                         <li><a href="#">LinkedIn</a></li>
                         <li><a href="#">GitHub</a></li>
-                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="#">Boletín</a></li>
                     </ul>
                 </div>
             </div>
@@ -197,7 +408,6 @@
             </div>
         </div>
     </footer>
-
 </body>
 
 </html>
